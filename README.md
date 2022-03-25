@@ -1,0 +1,1 @@
+# bumagi-frontend-test
