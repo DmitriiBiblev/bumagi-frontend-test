@@ -6,7 +6,8 @@ export abstract class FormFieldControlDirective<T> {
   value!: T | null;
   focused!: boolean;
   stateChanges!: Observable<void>;
+  controlType?: string;
 
-  abstract onContainerClick(event: MouseEvent): void;
+  abstract onContainerClick?(event: MouseEvent): void;
 }
 

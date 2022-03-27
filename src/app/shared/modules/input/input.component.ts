@@ -5,7 +5,7 @@ import {
   Input,
   ElementRef,
   AfterViewInit,
-  OnDestroy,
+  OnDestroy, OnChanges,
 } from '@angular/core';
 import { FormFieldControlDirective } from '../form-field/directives/form-field-control.directive';
 import { Subject } from 'rxjs';
@@ -23,7 +23,7 @@ import { Subject } from 'rxjs';
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [{ provide: FormFieldControlDirective, useExisting: InputComponent }],
 })
-export class InputComponent implements FormFieldControlDirective<string | null>, AfterViewInit, OnDestroy {
+export class InputComponent implements FormFieldControlDirective<string | null>, AfterViewInit, OnChanges, OnDestroy {
   @Input()
   get value(): string {
     return this.inputValueAccessor.value;
@@ -38,6 +38,7 @@ export class InputComponent implements FormFieldControlDirective<string | null>,
 
   focused: boolean = false;
   stateChanges: Subject<void> = new Subject<void>();
+  controlType: string = 'input';
   private inputValueAccessor: { value: any };
 
   constructor(private elementRef: ElementRef<HTMLInputElement>) {
@@ -45,6 +46,10 @@ export class InputComponent implements FormFieldControlDirective<string | null>,
   }
 
   ngAfterViewInit() {
+    this.stateChanges.next();
+  }
+
+  ngOnChanges() {
     this.stateChanges.next();
   }
 

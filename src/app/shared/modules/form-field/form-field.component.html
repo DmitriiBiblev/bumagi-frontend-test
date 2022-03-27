@@ -1,4 +1,4 @@
-<div class='wrapper' [class.focused]='control.focused || control.value' (click)='control.onContainerClick($event)'>
+<div class='wrapper' (click)='control.onContainerClick && control.onContainerClick($event)'>
   <div *ngIf='prefixChildren?.length' class='prefix'>
     <ng-content select='[appPrefix]'></ng-content>
   </div>
@@ -9,7 +9,6 @@
     <ng-content select='[appSuffix]'></ng-content>
   </div>
 </div>
-<div class='error'>
+<div *ngIf='!hideError' class='error'>
   <ng-content select='app-error'></ng-content>
 </div>
-{{control.value}}
