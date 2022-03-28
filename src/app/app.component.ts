@@ -1,5 +1,6 @@
 import { Component, DoCheck, OnChanges } from '@angular/core';
-import { FormBuilder,  FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ModalService } from './shared/modules/dialog/dialog.service';
 
 @Component({
   selector: 'app-root',
@@ -23,6 +24,8 @@ import { FormBuilder,  FormGroup, Validators } from '@angular/forms';
         </app-error>
       </app-form-field>
     </form>
+    <button b-button (click)="openModal('modal')">Click</button>
+    <app-dialog id="modal"></app-dialog>
   `,
 })
 export class AppComponent implements OnChanges, DoCheck {
@@ -32,8 +35,10 @@ export class AppComponent implements OnChanges, DoCheck {
     { value: 'option2', viewValue: 'Поле 2' },
     { value: 'option3', viewValue: 'Поле 3' },
   ];
+  openedDialog: boolean = false;
 
   constructor(
+    private modalService: ModalService,
     private readonly fb: FormBuilder,
   ) {
     this.form = fb.group({
@@ -53,13 +58,17 @@ export class AppComponent implements OnChanges, DoCheck {
     });
   }
 
+
   ngOnChanges() {
     console.log(this.form.value);
   }
 
   ngDoCheck() {
     console.log(this.form.value);
+  }
 
+  openModal(id: string) {
+    this.modalService.open(id);
   }
 
 }

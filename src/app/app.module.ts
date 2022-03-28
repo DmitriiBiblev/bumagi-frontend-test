@@ -8,6 +8,8 @@ import { InputModule } from './shared/modules/input/input.module';
 import { SelectModule } from './shared/modules/select/select.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ButtonModule } from './shared/modules/button/button.module';
+import { DialogModule } from './shared/modules/dialog/dialog.module';
 
 @NgModule({
   declarations: [
@@ -21,6 +23,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     SelectModule,
     ReactiveFormsModule,
     BrowserAnimationsModule,
+    ButtonModule,
+    DialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
