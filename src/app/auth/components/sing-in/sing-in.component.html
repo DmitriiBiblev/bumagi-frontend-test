@@ -1,0 +1,12 @@
+<form [formGroup]='form'>
+  <app-form-field>
+    <input appInput type='email' formControlName='email'>
+    <app-error *ngIf='form.controls["email"].hasError("required") && form.controls["email"].touched'>Email is required</app-error>
+    <app-error *ngIf='form.controls["email"].hasError("email") && form.controls["email"].touched'>Email is incorrect</app-error>
+  </app-form-field>
+  <app-form-field>
+    <input appInput type='password' formControlName='password'>
+    <i appSuffix class='icon icon-eye'></i>
+  </app-form-field>
+  <button b-button large full>Войти</button>
+</form>

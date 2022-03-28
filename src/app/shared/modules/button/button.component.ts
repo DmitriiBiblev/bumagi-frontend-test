@@ -1,6 +1,5 @@
 import { Component, ChangeDetectionStrategy, ElementRef, ViewEncapsulation } from '@angular/core';
-import { CanDisable, CanDisableCtor, mixinDisabled } from '../../helpers/disabled.helper';
-import { CanFull, CanFullCtor, mixinFull } from '../../helpers/full.helper';
+import { CanDisable, CanDisableCtor, CanFull, CanFullCtor, mixinDisabled, mixinFull } from '../../helpers';
 import { Button, ButtonCtor, mixinButton } from './button.helper';
 
 class ButtonBase {
@@ -20,6 +19,7 @@ const ButtonMixinBase: ButtonCtor & CanDisableCtor & CanFullCtor & typeof Button
   host: {
     '[attr.disabled]': 'disabled || null',
     'class': 'b-button',
+    '[class.full]': 'full',
     '[class.large]': 'large',
     '(click)': 'ripple($event)',
   },
