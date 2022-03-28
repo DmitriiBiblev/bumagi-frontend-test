@@ -1,0 +1,14 @@
+<div class='wrap' (click)='toggle()'>
+  <span class='value' [class.placeholder]='!value'>{{renderValue()}}</span>
+  <i class='icon-arrow'></i>
+</div>
+<div *ngIf='focused' class='dropdown' @dropdown>
+  <div
+    *ngFor='let option of options'
+    class='option'
+    [class.active]='value === option.value'
+    (click)='select(option.value)'
+  >
+    {{option.viewValue}}
+  </div>
+</div>

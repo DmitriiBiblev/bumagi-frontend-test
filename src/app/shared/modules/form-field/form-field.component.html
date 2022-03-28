@@ -1,0 +1,14 @@
+<div class='wrapper' (click)='control.onContainerClick && control.onContainerClick($event)'>
+  <div *ngIf='prefixChildren?.length' class='prefix'>
+    <ng-content select='[appPrefix]'></ng-content>
+  </div>
+  <div class='infix'>
+    <ng-content></ng-content>
+  </div>
+  <div *ngIf='suffixChildren?.length' class='suffix'>
+    <ng-content select='[appSuffix]'></ng-content>
+  </div>
+</div>
+<div class='error'>
+  <ng-content select='app-error'></ng-content>
+</div>

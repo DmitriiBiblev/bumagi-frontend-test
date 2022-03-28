@@ -1,0 +1,27 @@
+.b-button  {
+  font-size: 1.3rem;
+  line-height: 1.8rem;
+  font-family: var(--font-family-inter);
+  font-weight: 500;
+  color: var(--white);
+  background: var(--blue);
+  padding: 1.1rem 4.9rem;
+  border: 0;
+  border-radius: .6rem;
+  cursor: pointer;
+  transition: background-color .2s;
+
+  &.large {
+    font-size: 1.7rem;
+    line-height: 2.2rem;
+    padding: 1.3rem 4.9rem;
+  }
+
+  &:hover {
+    background: var(--blue-75);
+  }
+
+  &:disabled {
+    background: var(--blue-25);
+  }
+}
