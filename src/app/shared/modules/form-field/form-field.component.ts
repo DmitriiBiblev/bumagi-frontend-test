@@ -3,13 +3,22 @@ import {
   ChangeDetectionStrategy,
   ContentChild,
   ChangeDetectorRef,
-  AfterContentInit, ContentChildren, QueryList, ElementRef, ViewEncapsulation,
+  AfterContentInit,
+  ContentChildren,
+  QueryList,
+  ElementRef,
+  ViewEncapsulation,
 } from '@angular/core';
-import { FormFieldControlDirective } from './directives/form-field-control.directive';
+import {
+  APP_ERROR,
+  APP_PREFIX,
+  APP_SUFFIX,
+  ErrorDirective,
+  FormFieldControlDirective,
+  PrefixDirective,
+  SuffixDirective,
+} from './directives';
 import { startWith } from 'rxjs/operators';
-import { APP_SUFFIX, SuffixDirective } from './directives/suffix.directive';
-import { APP_PREFIX, PrefixDirective } from './directives/prefix.directive';
-import { APP_ERROR, ErrorDirective } from './directives/error.directive';
 
 @Component({
   selector: 'app-form-field',
@@ -23,7 +32,7 @@ import { APP_ERROR, ErrorDirective } from './directives/error.directive';
   encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class FormFieldComponent  implements AfterContentInit {
+export class FormFieldComponent implements AfterContentInit {
   @ContentChild(FormFieldControlDirective) control!: FormFieldControlDirective<any>;
   @ContentChildren(APP_PREFIX, { descendants: true }) prefixChildren?: QueryList<PrefixDirective>;
   @ContentChildren(APP_SUFFIX, { descendants: true }) suffixChildren?: QueryList<SuffixDirective>;

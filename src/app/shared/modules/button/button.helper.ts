@@ -1,6 +1,4 @@
-import { Constructor } from '../../helpers/constructor.helper';
-import { booleanProperty } from '../../helpers/boolean-property.helper';
-
+import { booleanProperty, Constructor } from '../../helpers';
 
 export interface Button {
   large: boolean;

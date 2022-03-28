@@ -10,7 +10,7 @@ import {
   HostListener,
 } from '@angular/core';
 import { ControlValueAccessor, NgControl } from '@angular/forms';
-import { FormFieldControlDirective } from '../form-field/directives/form-field-control.directive';
+import { FormFieldControlDirective } from '../form-field/directives';
 import { Subject } from 'rxjs';
 import { DropdownAnimation } from './dropdown.animation';
 

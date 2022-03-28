@@ -7,7 +7,7 @@ import {
   AfterViewInit,
   OnDestroy, OnChanges,
 } from '@angular/core';
-import { FormFieldControlDirective } from '../form-field/directives/form-field-control.directive';
+import { FormFieldControlDirective } from '../form-field/directives';
 import { Subject } from 'rxjs';
 
 @Component({
