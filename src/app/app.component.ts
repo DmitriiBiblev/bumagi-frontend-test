@@ -5,7 +5,7 @@ import { FormBuilder,  FormGroup, Validators } from '@angular/forms';
   selector: 'app-root',
   template: `
     <form [formGroup]='form' style='width: 24rem; margin: auto; display: grid; grid-gap: 2rem; padding: 2rem; '>
-      <app-form-field hideError>
+      <app-form-field>
         <input appInput type='text' placeholder='text' formControlName='input'>
         <app-error *ngIf='form.controls["input"].hasError("required") && form.controls["input"].touched'>Error1
         </app-error>
