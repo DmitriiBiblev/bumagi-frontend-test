@@ -1,0 +1,10 @@
+<div class='user' (click)='openDialog("user-dialog")'>
+  <img src='https://randomuser.me/api/portraits/men/32.jpg' alt='' class='avatar'>
+  <span class='text name'>Иванов П. Ф.</span>
+  <span class='text balance'>Баланс: 1 234.5</span>
+  <span class='text date'>Последнее изменение: 10 секунд назад</span>
+  <span class='text status'>Подписка активна</span>
+</div>
+<app-dialog id='user-dialog'>
+  <app-user-dialog></app-user-dialog>
+</app-dialog>

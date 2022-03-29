@@ -1,0 +1,23 @@
+<div class='header'>
+  <span class='name'>Иванов Иван</span>
+  <i class='icon-remove' (click)='close()'></i>
+</div>
+<div class='content'>
+  <form [formGroup]='form'>
+    <app-form-field>
+      <input appInput formControlName='name' type='text' placeholder='Имя'>
+    </app-form-field>
+    <app-form-field>
+      <input appInput formControlName='fname' type='text' placeholder='Фамилия'>
+    </app-form-field>
+    <app-form-field>
+      <input appInput formControlName='mname' type='text' placeholder='Отчество'>
+    </app-form-field>
+    <app-form-field>
+      <app-select formControlName='status' [options]='statuses' placeholder='Статус'></app-select>
+    </app-form-field>
+  </form>
+</div>
+<div class='footer'>
+  <button b-button>Сохранить</button>
+</div>

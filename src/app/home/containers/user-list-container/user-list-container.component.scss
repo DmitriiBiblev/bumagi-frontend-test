@@ -1,0 +1,13 @@
+:host {
+  padding: 4.8rem;
+
+  &:after {
+    content: '';
+    height: 4.4rem;
+    background: linear-gradient(180deg, rgba(247, 247, 247, 0) 0%, var(--grey-bg) 100%);
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+}

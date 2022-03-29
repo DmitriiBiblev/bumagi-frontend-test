@@ -3,16 +3,12 @@ import { CommonModule } from '@angular/common';
 
 import { AuthRoutingModule } from './auth-routing.module';
 import { AuthComponent } from './auth.component';
-import { ButtonModule, FormFieldModule, InputModule } from '../shared/modules';
+import { ButtonModule, FormFieldModule, InputModule } from '../shared';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './services';
 import { HttpClientModule } from '@angular/common/http';
 import { SingInComponent } from './components';
 import { SingInContainerComponent } from './containers';
-import { StoreModule } from '@ngrx/store';
-import { reducers } from './store/reducers';
-import { EffectsModule } from '@ngrx/effects';
-import { AuthEffects } from './store/effects/auth.effects';
 
 @NgModule({
   declarations: [
@@ -28,8 +24,6 @@ import { AuthEffects } from './store/effects/auth.effects';
     ButtonModule,
     ReactiveFormsModule,
     HttpClientModule,
-    StoreModule.forRoot(reducers),
-    EffectsModule.forFeature([AuthEffects]),
   ],
   providers: [
     AuthService,
