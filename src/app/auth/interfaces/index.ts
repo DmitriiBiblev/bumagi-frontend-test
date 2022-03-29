@@ -1,1 +1,1 @@
-export * from './sign-in-data.interface';
+export * from './sign-in-form-data.interface';
