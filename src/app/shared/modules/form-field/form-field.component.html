@@ -9,6 +9,6 @@
     <ng-content select='[appSuffix]'></ng-content>
   </div>
 </div>
-<div class='error'>
+<div *ngIf='!hideError' class='error'>
   <ng-content select='app-error'></ng-content>
 </div>

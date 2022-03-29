@@ -1,0 +1,43 @@
+header {
+  height: 4.7rem;
+  background: var(--white);
+  padding: 0 4.8rem;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, .07);
+  display: flex;
+  align-items: flex-end;
+  gap: 3.6rem;
+}
+
+.status {
+  height: 100%;
+  font-size: 1.3rem;
+  line-height: 1.8rem;
+  font-family: var(--font-family-inter);
+  font-weight: 500;
+  color: var(--grey-75);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  flex-direction: column;
+  cursor: pointer;
+  transition: color .2s;
+
+  &:after {
+    content: '';
+    width: 0;
+    height: .3rem;
+    background: var(--white);
+    border-radius: .2rem .2rem 0 0;
+    margin-top: 1rem;
+    transition: width .2s, background-color .2s;
+  }
+
+  &.active {
+    color: var(--dark);
+
+    &:after {
+      width: 100%;
+      background: var(--blue);
+    }
+  }
+}

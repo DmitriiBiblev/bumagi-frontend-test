@@ -7,7 +7,7 @@ import {
   OnInit,
   ViewEncapsulation,
 } from '@angular/core';
-import { ModalService } from './dialog.service';
+import { DialogService } from './dialog.service';
 
 @Component({
   selector: 'app-dialog',
@@ -21,7 +21,7 @@ export class DialogComponent implements OnInit, OnDestroy {
   private readonly element: HTMLDivElement;
 
   constructor(
-    private modalService: ModalService,
+    private dialogService: DialogService,
     private elementRef: ElementRef<HTMLDivElement>,
   ) {
     this.element = elementRef.nativeElement;
@@ -29,11 +29,11 @@ export class DialogComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     document.body.appendChild(this.element);
-    this.modalService.add(this);
+    this.dialogService.add(this);
   }
 
   ngOnDestroy(): void {
-    this.modalService.remove(this.id);
+    this.dialogService.remove(this.id);
     this.element.remove();
   }
 

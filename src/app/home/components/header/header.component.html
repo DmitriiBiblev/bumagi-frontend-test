@@ -1,0 +1,10 @@
+<header>
+  <div
+    *ngFor='let s of statuses'
+    class='status'
+    [class.active]='status === s.value'
+    (click)='status = s.value'
+  >
+    {{s.text}}
+  </div>
+</header>

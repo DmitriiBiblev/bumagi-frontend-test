@@ -63,4 +63,11 @@
     color: var(--red);
     padding: 0 1.6rem;
   }
+
+  &.ghost {
+    & .wrapper {
+      border: 0;
+      box-shadow: none;
+    }
+  }
 }
