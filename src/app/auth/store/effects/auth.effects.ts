@@ -6,12 +6,14 @@ import { SignInFormData } from '../../interfaces';
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import * as AuthActions from '../actions/auth.actions';
 import { AuthActionTypes } from '../actions/auth.actions';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class AuthEffects {
   constructor(
     private actions$: Actions,
     private authService: AuthService,
+    private router: Router,
   ) {
   }
 
@@ -19,7 +21,10 @@ export class AuthEffects {
     ofType(AuthActionTypes.signIn),
     exhaustMap((data: SignInFormData) =>
       this.authService.signIn(data).pipe(
-        map((res: HttpResponse<{ message: string }>) => AuthActions.signInSuccess({ authToken: res.headers.get('Authorization')! })),
+        map((res: HttpResponse<{ message: string }>) => {
+          this.router.navigate(['/']);
+          return AuthActions.signInSuccess({ authToken: res.headers.get('Authorization')! })
+        }),
         catchError((err: HttpErrorResponse) => of(AuthActions.signInFailed({ errorMessage: err.error.message }))),
       ),
     ),

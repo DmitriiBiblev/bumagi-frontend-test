@@ -1,21 +1,18 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { SignInFormData } from '../../interfaces';
-import { AuthService } from '../../services';
 import { signIn } from '../../store/actions/auth.actions';
 import { Store } from '@ngrx/store';
+import { RootState } from '../../../store';
 
 @Component({
   template: '<app-sing-in (signIn)="signIn($event)"></app-sing-in>',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SingInContainerComponent {
-  constructor(
-    private authService: AuthService,
-    private store: Store,
-  ) {
+  constructor(private store: Store<RootState>) {
   }
 
-  signIn(formData: SignInFormData) {
+  signIn(formData: SignInFormData): void {
     this.store.dispatch(signIn(formData));
   }
 }

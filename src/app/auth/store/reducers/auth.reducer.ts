@@ -1,13 +1,13 @@
 import * as AuthActions from '../actions/auth.actions';
 import { createReducer, on } from '@ngrx/store';
 
-export interface State {
+export interface AuthState {
   authToken?: string;
   isLoaded?: boolean;
   errorMessage?: string;
 }
 
-export const initialState: State = {
+const initialState: AuthState = {
   authToken: undefined,
   isLoaded: false,
   errorMessage: undefined,
