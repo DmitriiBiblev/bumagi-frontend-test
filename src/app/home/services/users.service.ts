@@ -1,9 +1,21 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class UsersService {
+  constructor(
+    private http: HttpClient,
+  ) {
+  }
 
-  constructor() { }
+  getUsers(status?: number): Observable<any> {
+    const params = status !== undefined ? `status=${status}` : '';
+
+    return this.http.get(
+      `https://bumagi-frontend-test.herokuapp.com/users?${params}`,
+    );
+  }
 }
