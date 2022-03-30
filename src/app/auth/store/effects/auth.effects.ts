@@ -7,6 +7,7 @@ import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import * as AuthActions from '../actions/auth.actions';
 import { AuthActionTypes } from '../actions/auth.actions';
 import { Router } from '@angular/router';
+import { SnackbarService } from '../../../shared/modules/snackbar/snackbar.service';
 
 @Injectable()
 export class AuthEffects {
@@ -14,6 +15,7 @@ export class AuthEffects {
     private actions$: Actions,
     private authService: AuthService,
     private router: Router,
+    private snackbarService: SnackbarService,
   ) {
   }
 
@@ -23,9 +25,12 @@ export class AuthEffects {
       this.authService.signIn(data).pipe(
         map((res: HttpResponse<{ message: string }>) => {
           this.router.navigate(['/']);
-          return AuthActions.signInSuccess({ authToken: res.headers.get('Authorization')! })
+          return AuthActions.signInSuccess({ authToken: res.headers.get('Authorization')! });
         }),
-        catchError((err: HttpErrorResponse) => of(AuthActions.signInFailed({ errorMessage: err.error.message }))),
+        catchError((err: HttpErrorResponse) => {
+          this.snackbarService.openSnackBar(err.error.message);
+          return of(AuthActions.signInFailed({ errorMessage: err.error.message }));
+        }),
       ),
     ),
   ));
