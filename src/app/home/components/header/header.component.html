@@ -3,7 +3,7 @@
     *ngFor='let s of statuses'
     class='status'
     [class.active]='status === s.value'
-    (click)='status = s.value'
+    (click)='onStatusChange(s.value)'
   >
     {{s.text}}
   </div>

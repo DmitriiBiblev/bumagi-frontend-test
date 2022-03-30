@@ -6,16 +6,12 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class UsersService {
-  constructor(
-    private http: HttpClient,
-  ) {
+  constructor(private http: HttpClient) {
   }
 
   getUsers(status?: number): Observable<any> {
-    const params = status !== undefined ? `status=${status}` : '';
+    const params = status !== null ? `status=${status}` : '';
 
-    return this.http.get(
-      `https://bumagi-frontend-test.herokuapp.com/users?${params}`,
-    );
+    return this.http.get(`https://bumagi-frontend-test.herokuapp.com/users?${params}`);
   }
 }

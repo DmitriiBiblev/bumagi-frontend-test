@@ -1,4 +1,4 @@
-import { Component, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
 import { Status } from '../interfaces';
 
 @Component({
@@ -8,12 +8,16 @@ import { Status } from '../interfaces';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class HeaderComponent {
-  @Input() status!: number | null;
   @Output() statusChange: EventEmitter<number | null> = new EventEmitter<number | null>();
-
+  status: number | null = null;
   statuses: Status[] = [
     { value: null, text: 'Все' },
     { value: 2, text: 'Заблокированные' },
     { value: 0, text: 'Активные' },
   ];
+
+  onStatusChange(value: number | null) {
+    this.status = value;
+    this.statusChange.emit(value);
+  }
 }

@@ -1,18 +1,21 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { UsersService } from './services/users.service';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { RootState } from '../store';
+import { Observable } from 'rxjs';
+import { selectIsLoaded } from './store/selectors/users.selectors';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent {
+  isLoaded$: Observable<boolean>;
 
-  constructor(private usersService: UsersService) { }
-
-  ngOnInit(): void {
-    this.usersService.getUsers(1).subscribe()
+  constructor(private store: Store<RootState>) {
+    this.isLoaded$ = store.select(selectIsLoaded);
   }
+
 
 }

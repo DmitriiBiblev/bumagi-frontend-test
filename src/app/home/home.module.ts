@@ -7,6 +7,8 @@ import { HeaderContainerComponent, UserContainerComponent, UserListContainerComp
 import { HeaderComponent, LoaderComponent, UserComponent, UserDialogComponent, UserListComponent } from './components';
 import { ButtonModule, DialogModule, FormFieldModule, InputModule, SelectModule } from '../shared';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NumberPipe } from './pipes/number.pipe';
+import { LastUpdatedAtPipe } from './pipes/last-updated-at.pipe';
 
 @NgModule({
   declarations: [
@@ -19,6 +21,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     UserListComponent,
     HeaderContainerComponent,
     LoaderComponent,
+    NumberPipe,
+    LastUpdatedAtPipe,
   ],
   imports: [
     CommonModule,
