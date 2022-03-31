@@ -9,4 +9,8 @@ import { User } from '../../interfaces/user.interface';
 })
 export class UserListComponent {
   @Input() usersList?: User[] | null;
+
+  userTrackBy(index: number, user: User) {
+    return user.id;
+  }
 }

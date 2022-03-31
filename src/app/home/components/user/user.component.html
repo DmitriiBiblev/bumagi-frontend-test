@@ -1,10 +1,7 @@
-<div class='user' (click)='openDialog("user-dialog")'>
+<div class='user'>
   <img src='https://randomuser.me/api/portraits/men/32.jpg' alt='Аватар' class='avatar'>
   <span class='text name'>{{user.fname}} {{user.name[0]}}. {{user.mname[0]}}.</span>
   <span class='text balance'>Баланс: {{user.balance | number}}</span>
   <span class='text date'>Последнее изменение: {{user.lastUpdatedAt | lastUpdatedAt}} </span>
   <span class='text status'>{{renderStatus(user.status)}}</span>
 </div>
-<!--<app-dialog id='user-dialog'>-->
-<!--  <app-user-dialog></app-user-dialog>-->
-<!--</app-dialog>-->

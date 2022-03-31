@@ -1,4 +1,4 @@
-import { Option } from '../../../shared/modules/select/option.interface';
+import { Option } from '../../shared/modules/select/option.interface';
 
 export const statuses: Option[] = [
   { value: 1, viewValue: 'Приостановлена' },

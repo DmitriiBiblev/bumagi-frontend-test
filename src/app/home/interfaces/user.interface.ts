@@ -1,10 +1,7 @@
-export interface User {
+import { UserForm } from './user-form.interface';
+
+export interface User extends UserForm {
   avatar: string;
   balance: number;
-  fname: string;
-  id: number;
   lastUpdatedAt: string;
-  mname: string;
-  name: string;
-  status: number;
 }

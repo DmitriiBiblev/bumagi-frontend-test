@@ -1,1 +1,4 @@
-<app-user-container *ngFor='let user of usersList' [user]='user'></app-user-container>
+<app-user-container
+  *ngFor='let user of usersList; trackBy: userTrackBy'
+  [user]='user'
+></app-user-container>

@@ -23,7 +23,7 @@ import { DropdownAnimation } from './dropdown.animation';
   providers: [{ provide: FormFieldControlDirective, useExisting: SelectComponent }],
 })
 export class SelectComponent implements FormFieldControlDirective<string | null>, ControlValueAccessor, AfterViewInit, OnChanges, OnDestroy {
-  @Input() options!: { value: string, viewValue: string }[];
+  @Input() options!: { value: string | number, viewValue: string }[];
   @Input() placeholder!: string;
 
   @Input()
@@ -95,10 +95,10 @@ export class SelectComponent implements FormFieldControlDirective<string | null>
 
   renderValue(): string {
     const option = this.options.find((option) => option.value === this.value);
-    return option ? option.viewValue : this.placeholder;
+    return option !== undefined ? option.viewValue : this.placeholder;
   }
 
-  select(value: string): void {
+  select(value: string | number): void {
     this.writeValue(value);
     this._onChange(this.value);
     this.focused = false;

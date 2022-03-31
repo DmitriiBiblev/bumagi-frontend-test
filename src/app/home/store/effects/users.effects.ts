@@ -6,6 +6,7 @@ import { UsersActionTypes } from '../actions/users.actions';
 import { catchError, map, mergeMap, of } from 'rxjs';
 import { User } from '../../interfaces/user.interface';
 import * as UsersActions from '../actions/users.actions';
+import { UserForm } from '../../interfaces/user-form.interface';
 
 @Injectable()
 export class UsersEffects {
@@ -18,13 +19,27 @@ export class UsersEffects {
 
   getUsers$ = createEffect(() => this.actions$.pipe(
     ofType(UsersActionTypes.getUsers),
-    mergeMap((props: { status?: number | undefined }) =>
+    mergeMap((props: { status: number | null }) =>
       this.usersService.getUsers(props.status).pipe(
-        map((users: User[]) => UsersActions.getUsersSuccess({ users })),
+        map((data: User[] | { message: string }) => {
+          if ((data as { message: string }).message)
+            return UsersActions.getUsers(props);
+          return UsersActions.getUsersSuccess({ users: (data as User[]) });
+        }),
         catchError((err) => {
           this.snackbarService.openSnackBar(err.error.message);
           return of(UsersActions.getUsersFailed());
         }),
+      ),
+    ),
+  ));
+
+  saveUser$ = createEffect(() => this.actions$.pipe(
+    ofType(UsersActionTypes.saveUser),
+    mergeMap((userForm: UserForm) =>
+      this.usersService.saveUser(userForm).pipe(
+        map((user: User) => UsersActions.saveUserSuccess(user)),
+        catchError(() => of(UsersActions.saveUserFailed())),
       ),
     ),
   ));

@@ -1,7 +1,7 @@
-import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy, Input, Output, EventEmitter, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { DialogService } from '../../../shared';
 import { UserFormData } from '../interfaces';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-user-dialog',
@@ -15,14 +15,14 @@ export class UserDialogComponent implements OnInit {
 
   form: FormGroup;
   statuses = [
-    { value: '0', viewValue: 'Активен' },
-    { value: '1', viewValue: 'Приостановлен' },
-    { value: '2', viewValue: 'Заблокирован' },
+    { value: 0, viewValue: 'Активен' },
+    { value: 1, viewValue: 'Приостановлен' },
+    { value: 2, viewValue: 'Заблокирован' },
   ];
 
   constructor(
     private formBuilder: FormBuilder,
-    private dialogService: DialogService,
+    @Inject(MAT_DIALOG_DATA) public data: any,
   ) {
     this.form = formBuilder.group({
       name: [null, Validators.required],
@@ -33,10 +33,6 @@ export class UserDialogComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.form.setValue(this.userFormData);
-  }
-
-  close() {
-    this.dialogService.close('user-dialog');
+    this.form.setValue(this.data);
   }
 }
