@@ -1,0 +1,43 @@
+:host {
+  height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}
+
+.header {
+  padding: 2rem 2.2rem 2rem 3.4rem;
+  border-bottom: .1rem solid var(--grey-25);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.name {
+  font-size: 34px;
+  line-height: 41px;
+  font-family: var(--font-family-inter);
+  font-weight: 700;
+}
+
+.icon-remove {
+  font-size: 4.2rem;
+  color: var(--blue);
+  cursor: pointer;
+}
+
+.content {
+  padding: 3.4rem 2.2rem 0 3.4rem;
+
+}
+
+form {
+  display: grid;
+  grid-template-columns: repeat(3, 24rem);
+  grid-gap: 1.3rem 2.8rem;
+}
+
+.footer {
+  padding: 2rem 2.2rem 2.2rem 3.4rem;
+  display: flex;
+  justify-content: flex-end;
+}
