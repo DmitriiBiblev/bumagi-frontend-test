@@ -1,3 +1,5 @@
 <app-header-container></app-header-container>
-<!--<app-user-list-container></app-user-list-container>-->
-<app-loader></app-loader>
+<ng-container [ngSwitch]='isLoaded$ | async'>
+  <app-user-list-container *ngSwitchCase='false'></app-user-list-container>
+  <app-loader *ngSwitchCase='true'></app-loader>
+</ng-container>

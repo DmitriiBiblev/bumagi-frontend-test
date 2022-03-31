@@ -1,12 +1,16 @@
-<form [formGroup]='form'>
+<form [formGroup]='form' (ngSubmit)='signIn.emit(form.value)'>
   <app-form-field>
-    <input appInput type='email' formControlName='email'>
-    <app-error *ngIf='form.controls["email"].hasError("required") && form.controls["email"].touched'>Email is required</app-error>
-    <app-error *ngIf='form.controls["email"].hasError("email") && form.controls["email"].touched'>Email is incorrect</app-error>
+    <input appInput formControlName='login' type='text' placeholder='Логин'>
+    <app-error *ngIf='form.controls["login"].hasError("required") && form.controls["login"].touched'>
+      Логин обязателен
+    </app-error>
   </app-form-field>
   <app-form-field>
-    <input appInput type='password' formControlName='password'>
-    <i appSuffix class='icon icon-eye'></i>
+    <input appInput formControlName='password' [type]='isShowPassword ? "text" : "password"' placeholder='Пароль'>
+    <i appSuffix [ngClass]='isShowPassword ? "icon-eye-hide" : "icon-eye"' (click)='isShowPassword=!isShowPassword'></i>
+    <app-error *ngIf='form.controls["password"].hasError("required") && form.controls["password"].touched'>
+      Пароль обязателен
+    </app-error>
   </app-form-field>
   <button b-button large full>Войти</button>
 </form>

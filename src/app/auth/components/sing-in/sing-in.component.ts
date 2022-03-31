@@ -1,5 +1,6 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { SignInFormData } from '../../interfaces';
 
 @Component({
   selector: 'app-sing-in',
@@ -8,21 +9,15 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SingInComponent {
+  @Output() signIn: EventEmitter<SignInFormData> = new EventEmitter<SignInFormData>();
+
   form: FormGroup;
+  isShowPassword: boolean = false;
 
   constructor(private formBuilder: FormBuilder) {
     this.form = formBuilder.group({
-      email: [
-        null,
-        Validators.compose([
-          Validators.required,
-          Validators.email,
-        ]),
-      ],
-      password: [
-        null,
-        Validators.required,
-      ],
+      login: [null, Validators.required],
+      password: [null, Validators.required],
     });
   }
 }

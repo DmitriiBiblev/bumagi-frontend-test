@@ -1,6 +1,7 @@
-import { Component, OnInit, ChangeDetectionStrategy, ElementRef } from '@angular/core';
-import { FormControl } from '@angular/forms';
-import { DialogService } from '../../../shared';
+import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
+import { User } from '../../interfaces/user.interface';
+import { Option } from '../../../shared/modules/select/option.interface';
+import { statuses } from '../../data/statuses.data';
 
 @Component({
   selector: 'app-user',
@@ -8,20 +9,11 @@ import { DialogService } from '../../../shared';
   styleUrls: ['./user.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class UserComponent implements OnInit {
-  status = new FormControl('1');
+export class UserComponent {
+  @Input() user!: User;
+  statuses: Option[] = statuses;
 
-  constructor(
-    private elementRef: ElementRef,
-    private dialogService: DialogService,
-  ) {
+  renderStatus(status: number): string {
+    return this.statuses.find((s: Option) => s.value === status)!.viewValue;
   }
-
-  openDialog(id: string) {
-    this.dialogService.open(id);
-  }
-
-  ngOnInit(): void {
-  }
-
 }

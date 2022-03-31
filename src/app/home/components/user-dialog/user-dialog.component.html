@@ -1,6 +1,6 @@
 <div class='header'>
   <span class='name'>Иванов Иван</span>
-  <i class='icon-remove' (click)='close()'></i>
+  <i mat-dialog-close='' class='icon-remove'></i>
 </div>
 <div class='content'>
   <form [formGroup]='form'>
@@ -19,5 +19,5 @@
   </form>
 </div>
 <div class='footer'>
-  <button b-button>Сохранить</button>
+  <button b-button [mat-dialog-close]='form.value'>Сохранить</button>
 </div>

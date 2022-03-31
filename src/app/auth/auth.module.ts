@@ -5,8 +5,6 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { AuthComponent } from './auth.component';
 import { ButtonModule, FormFieldModule, InputModule } from '../shared';
 import { ReactiveFormsModule } from '@angular/forms';
-import { AuthService } from './services';
-import { HttpClientModule } from '@angular/common/http';
 import { SingInComponent } from './components';
 import { SingInContainerComponent } from './containers';
 
@@ -23,10 +21,6 @@ import { SingInContainerComponent } from './containers';
     InputModule,
     ButtonModule,
     ReactiveFormsModule,
-    HttpClientModule,
-  ],
-  providers: [
-    AuthService,
   ],
 })
 export class AuthModule {
